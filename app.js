@@ -17,21 +17,25 @@ app.set('view engine', 'hbs')
 base.db.connect((err)=>{
     if(err) throw err
     console.log("Connected to the server!")
-    /*db.query("CREATE DATABASE validation", (err)=>{
+    /*base.db.query("CREATE DATABASE validation", (err)=>{
         if(err) throw err
         console.log("Database created")
     })
-    db.query("CREATE TABLE login (name varchar(20), age int, email varchar(20))", (err)=>{
+    base.db.query("CREATE TABLE login (name varchar(50), email varchar(100), password varchar(100))", (err)=>{
         if(err) throw err
         console.log("Table created")
     })
-    db.query("DROP TABLE login", (err)=>{
+    base.db.query("DROP TABLE login", (err)=>{
         if(err) throw err
         console.log("Table created")
     })
-    db.query("DROP DATABASE validation", (err)=>{
+    base.db.query("DROP DATABASE validation", (err)=>{
         if(err) throw err
         console.log("Database dropped")
+    })
+    base.db.query("ALTER TABLE login RENAME users", (err)=>{
+        if(err) throw err
+        console.log("Table name chaged")
     })*/
 })
 

@@ -28,6 +28,9 @@
         </div>
         <input type="submit" value="Register" id="register" name="register">
     </form>
+    {{#if message}}
+        <b><h4 style="color: red;">{{message}}</h4></b>
+    {{/if}}
     <a href="login">Login</a>
 </body>
 </html>
