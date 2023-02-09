@@ -3,10 +3,10 @@ const authController = require('../controllers/auth')
 const router = express.Router()
 
 
-router.post('/',(req,res)=>{
-    res.end("Welcome to the homepage")
-})
+//router.post('/', )
 
-router.post('/login', authController.register)
+router.post('/register', authController.register)
+
+router.post('/login', authController.login) 
 
 module.exports = router

@@ -9,7 +9,7 @@
 </head>
 <body>
     <h1>Login</h1>
-    <form action="/auth" method="post">
+    <form action="/auth/login" method="post">
         <div>
             <label for="email">Email</label>
             <input type="text" id="email" name="email">
@@ -20,6 +20,9 @@
         </div>
         <input type="submit" value="Login" id="login" name="login">
     </form>
+    {{#if message1}}
+        <b><h4 style="color: red;">{{message1}}</h4></b>
+    {{/if}}
     <a href="register">Register</a>
 </body>
 </html>

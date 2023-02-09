@@ -3,8 +3,8 @@ const bcrypt = require('bcrypt')
 const jwd = require('jsonwebtoken')
 
 exports.register = (req,res) => {
-
-    const{name,email,pass,cpass}=req.body
+    let{name,email,pass,cpass}=req.body
+    pass = pass.toString()
     base.db.query('SELECT email from users where email=?', [email], async (error, result)=>{
         if(error) console.log(error)
         if(result.length>0) return res.render('register', {
@@ -27,5 +27,25 @@ exports.register = (req,res) => {
                 })
             }
         })
+    })
+}
+
+exports.login = (req,res) => {
+    const{email,pass}=req.body
+    base.db.query('SELECT password from users where email=?', [email], async (error, result)=>{
+        if(error) console.log(error)
+        if(result.length>0){ 
+                var password_hash = result[0]["password"]
+                let result1 = await bcrypt.compare(pass, password_hash)
+                if(result1===true) return res.render('home')
+                else return res.render('login', {
+                    message1: 'Wrong Password'
+                })
+        }
+        else{
+            return res.render('login', {
+                message1: 'Email not registered'
+            })
+        }
     })
 }
