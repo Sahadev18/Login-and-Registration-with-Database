@@ -3,8 +3,7 @@ const bcrypt = require('bcrypt')
 const jwd = require('jsonwebtoken')
 
 exports.register = (req,res) => {
-    let{name,email,pass,cpass}=req.body
-    pass = pass.toString()
+    const{name,email,pass,cpass}=req.body
     base.db.query('SELECT email from users where email=?', [email], async (error, result)=>{
         if(error) console.log(error)
         if(result.length>0) return res.render('register', {
